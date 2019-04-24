@@ -1,0 +1,37 @@
+name: CustomServerUtilv2
+version: 1.0.0
+main: net.snapecraft.CustomServerUtilv2.CustomServerUtilv2
+author: SnapecraftDevTeam 
+commands:
+ 
+     c:
+        description: Creative mode
+        
+     s:
+       description: Survival mode
+     
+     day:
+         description: time to Day
+     
+     sun:
+         description: sunny weather
+        
+     tpa:
+         description: send Teleportation request
+         
+     tpaccept:
+              description: Accept´s Teleportation request
+              
+     tpdecline:
+              description: Decline´s Teleportation request         
+     
+     fly:
+        description: Fly like a bird
+               
+     vanish:
+        description: Invisible
+        alias: v     
+            
+                
+       
+            
