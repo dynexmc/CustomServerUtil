@@ -1,4 +1,4 @@
-package lnet.snapecraft.CustomServerUtilv2.listener;
+package net.snapecraft.CustomServerUtilv2.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

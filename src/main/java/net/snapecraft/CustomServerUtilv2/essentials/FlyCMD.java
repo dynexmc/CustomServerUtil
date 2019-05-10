@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.snapecraft.CustomServerUtilv2.CustomServerUtilv2;
+import net.snapecraft.CustomServerUtilv2.main.CustomServerUtilv2;
 
 public class FlyCMD implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings)

@@ -1,5 +1,7 @@
-package net.snapecraft.CustomServerUtilv2;
+package net.snapecraft.CustomServerUtilv2.main;
 
+import net.snapecraft.CustomServerUtilv2.commands.HomeCMD;
+import net.snapecraft.CustomServerUtilv2.commands.TpaCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.snapecraft.CustomServerUtilv2.essentials.FlyCMD;
@@ -7,9 +9,6 @@ import net.snapecraft.CustomServerUtilv2.essentials.Gamemodes;
 import net.snapecraft.CustomServerUtilv2.essentials.VanishCMD;
 import net.snapecraft.CustomServerUtilv2.essentials.dayCMD;
 import net.snapecraft.CustomServerUtilv2.essentials.sunCMD;
-import net.snapoecraft.CustomServerUtilv2.Tpa.AcceptTpaCMD;
-import net.snapoecraft.CustomServerUtilv2.Tpa.DeclineTpaCMD;
-import net.snapoecraft.CustomServerUtilv2.Tpa.SendTpaCMD;
 
 
 public class CustomServerUtilv2 extends JavaPlugin 
@@ -44,13 +43,14 @@ public class CustomServerUtilv2 extends JavaPlugin
 		getCommand("sun").setExecutor(new sunCMD());
 		getCommand("c").setExecutor(new Gamemodes());
 		getCommand("s").setExecutor(new Gamemodes());
-		//getCommand("sp").setExecutor(new Gamemodes());
-		getCommand("tpa").setExecutor(new SendTpaCMD());
-		getCommand("tpaccept").setExecutor(new AcceptTpaCMD());
-		getCommand("tpdecline").setExecutor(new DeclineTpaCMD());
+		getCommand("sp").setExecutor(new Gamemodes());
+		getCommand("tpa").setExecutor(new TpaCMD());
+		getCommand("tpaccept").setExecutor(new TpaCMD());
+		getCommand("tpdecline").setExecutor(new TpaCMD());
+		getCommand("tpahere").setExecutor(new TpaCMD());
 		getCommand("fly").setExecutor(new FlyCMD());
 		getCommand("vanish").setExecutor(new VanishCMD());
-		
+		getCommand("homes").setExecutor(new HomeCMD());
 		
 		
 	}

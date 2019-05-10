@@ -1,36 +1,32 @@
 name: CustomServerUtilv2
-version: 1.0.0
-main: net.snapecraft.CustomServerUtilv2.CustomServerUtilv2
+version: 1.0.3
+main: net.snapecraft.CustomServerUtilv2.main.CustomServerUtilv2
 author: SnapecraftDevTeam 
 commands:
- 
-     c:
-        description: Creative mode
-        
-     s:
-       description: Survival mode
-     
-     day:
-         description: time to Day
-     
-     sun:
-         description: sunny weather
-        
-     tpa:
-         description: send Teleportation request
-         
-     tpaccept:
-              description: Accept´s Teleportation request
-              
-     tpdecline:
-              description: Decline´s Teleportation request         
-     
-     fly:
-        description: Fly like a bird
-               
-     vanish:
-        description: Invisible
-        alias: v     
+  c:
+    description: Creative mode
+  s:
+   description: Survival mode
+  sp:
+    description: Spectator mode
+  day:
+    description: time to Day
+  sun:
+    description: sunny weather
+  tpa:
+    description: Send Teleportation request
+  tpahere:
+    description: Send Teleportation request to Player
+  tpaccept:
+    description: Accept´s Teleportation request
+  tpdecline:
+    description: Decline´s Teleportation request
+  fly:
+    description: Fly like a bird
+  vanish:
+    description: Invisible
+    aliases: [v]
+  homes:
             
                 
        
