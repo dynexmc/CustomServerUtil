@@ -1,13 +1,15 @@
 package net.snapecraft.CustomServerUtilv2.util;
 
+import net.snapecraft.CustomServerUtilv2.commands.HomeCMD;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Set;
 
 public class Locations {
 
@@ -17,9 +19,6 @@ public class Locations {
     private String playerName;
     private Location location;
     private String tpName;
-    private int homes;
-
-
 
     public Locations(Location location, String playerName,String tpName){
         this.playerName = playerName;
@@ -32,42 +31,69 @@ public class Locations {
         this.tpName = tpName;
     }
 
-    public void setHome(){
-            String path = playerName +".homes." + tpName;
-            int homes = cfg.getInt(playerName + ".homes.anzahl");
-            cfg.set(path + ".x",location.getX());
-            cfg.set(path + ".y",location.getY());
-            cfg.set(path + ".z",location.getZ());
-            cfg.set(path + ".yaw",location.getYaw());
-            cfg.set(path + ".pitch",location.getPitch());
-            save();
+    public Locations(String playerName){
+        this.playerName = playerName;
     }
 
-    public boolean hasFreeHomes() {
+    public void setHome(){
+        String path = playerName +".homes." + tpName;
+        cfg.set(path + ".world", location.getWorld().getName());
+        cfg.set(path + ".x",location.getX());
+        cfg.set(path + ".y",location.getY());
+        cfg.set(path + ".z",location.getZ());
+        cfg.set(path + ".yaw",location.getYaw());
+        cfg.set(path + ".pitch",location.getPitch());
+        save();
+    }
+
+    public Location getHome(){
+        String path = playerName +".homes." + tpName;
+        String W = cfg.getString(path + ".world");
+        World w = Bukkit.getWorld(W);
+        double x = cfg.getDouble(path + ".x");
+        double y = cfg.getDouble(path + ".y");
+        double z = cfg.getDouble(path + ".z");
+        float yaw = (float)cfg.getDouble(path + ".yaw");
+        float pitch = (float)cfg.getDouble(path + ".pitch");
+        return new Location(w,x,y,z,yaw,pitch);
+    }
+
+    public boolean hasFreeHomes(int homes) {
+        if(cfg.contains(playerName)){
         ConfigurationSection cs = cfg.getConfigurationSection(playerName + ".homes");
-        if(cs.getList(cs.getCurrentPath()).size() <= homes)
+        if(cs.getKeys(false).size() <= homes -1)
+            return true;
+        }else
             return true;
         return false;
     }
 
 
     public boolean homeExists(){
-        ConfigurationSection cs = cfg.getConfigurationSection(playerName + ".homes");
-        if(cs.contains(tpName))
+        if(cfg.contains(playerName + ".homes." + tpName))
             return true;
         return false;
     }
 
-    public Set<String> getHomes(){
+    public String getHomes(){
         if(playerExists()) {
             ConfigurationSection cs = cfg.getConfigurationSection(playerName + ".homes");
+            String out = "";
+            for(String s : cs.getKeys(false)){
+                out = HomeCMD.HomesFormat.replace("%homes%", s).replace("%nextHomes%",out);
+            }
 
-                return cs.getKeys(false);
-
+            out = out.trim();
+            out = out.substring(0, out.length() -4);
+                return out;
         }
         return null;
     }
 
+    public void removeHome(){
+        cfg.set(playerName + ".homes." + tpName, null);
+        save();
+    }
 
     public boolean playerExists(){
         if(cfg.contains(playerName))

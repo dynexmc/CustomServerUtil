@@ -27,6 +27,9 @@ commands:
     description: Invisible
     aliases: [v]
   homes:
+  sethome:
+  delhome:
+  home:
             
                 
        

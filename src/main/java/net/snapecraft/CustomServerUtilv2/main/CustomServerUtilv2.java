@@ -51,8 +51,9 @@ public class CustomServerUtilv2 extends JavaPlugin
 		getCommand("fly").setExecutor(new FlyCMD());
 		getCommand("vanish").setExecutor(new VanishCMD());
 		getCommand("homes").setExecutor(new HomeCMD());
-		
-		
+		getCommand("sethome").setExecutor(new HomeCMD());
+		getCommand("delhome").setExecutor(new HomeCMD());
+		getCommand("home").setExecutor(new HomeCMD());
 	}
 	
 	public static CustomServerUtilv2 getPlugin() {
