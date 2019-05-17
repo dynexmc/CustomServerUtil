@@ -8,8 +8,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.snapecraft.CustomServerUtilv2.essentials.FlyCMD;
 import net.snapecraft.CustomServerUtilv2.essentials.Gamemodes;
 import net.snapecraft.CustomServerUtilv2.essentials.VanishCMD;
-import net.snapecraft.CustomServerUtilv2.essentials.dayCMD;
-import net.snapecraft.CustomServerUtilv2.essentials.sunCMD;
+import net.snapecraft.CustomServerUtilv2.essentials.DayCMD;
+import net.snapecraft.CustomServerUtilv2.essentials.SunCMD;
 
 
 public class CustomServerUtilv2 extends JavaPlugin 
@@ -40,8 +40,8 @@ public class CustomServerUtilv2 extends JavaPlugin
 	
 	private void registerCommands()
 	{
-		getCommand("day").setExecutor(new dayCMD());
-		getCommand("sun").setExecutor(new sunCMD());
+		getCommand("day").setExecutor(new DayCMD());
+		getCommand("sun").setExecutor(new SunCMD());
 		getCommand("c").setExecutor(new Gamemodes());
 		getCommand("s").setExecutor(new Gamemodes());
 		getCommand("sp").setExecutor(new Gamemodes());
