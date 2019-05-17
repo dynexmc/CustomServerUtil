@@ -10,9 +10,9 @@ commands:
   sp:
     description: Spectator mode
   day:
-    description: time to Day
+    description: Time to Day
   sun:
-    description: sunny weather
+    description: Sunny weather
   tpa:
     description: Send Teleportation request
   tpahere:
@@ -27,12 +27,19 @@ commands:
     description: Invisible
     aliases: [v]
   homes:
+    description: See all your Homes
   sethome:
+    description: Set a Home
   delhome:
+    description: Delete a Home
   home:
+    description: Teleportation to a Home
   setwarp:
+    description: Set a Warp
   warps:
+    description: See all warps
   warp:
+    description: Teleportation to a warp
                 
        
             
