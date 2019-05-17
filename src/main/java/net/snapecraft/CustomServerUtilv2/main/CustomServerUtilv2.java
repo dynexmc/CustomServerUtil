@@ -6,7 +6,7 @@ import net.snapecraft.CustomServerUtilv2.commands.WarpCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.snapecraft.CustomServerUtilv2.essentials.FlyCMD;
-import net.snapecraft.CustomServerUtilv2.essentials.Gamemodes;
+import net.snapecraft.CustomServerUtilv2.essentials.GamemodeCMD;
 import net.snapecraft.CustomServerUtilv2.essentials.VanishCMD;
 import net.snapecraft.CustomServerUtilv2.essentials.DayCMD;
 import net.snapecraft.CustomServerUtilv2.essentials.SunCMD;
@@ -28,8 +28,7 @@ public class CustomServerUtilv2 extends JavaPlugin
 			"                                                                                    \n" ;
 	
 	@Override
-	public void onEnable() 
-	{
+	public void onEnable() {
 	
 		plugin = this;
 		registerCommands();
@@ -38,13 +37,12 @@ public class CustomServerUtilv2 extends JavaPlugin
 		System.out.println(art);
 	}
 	
-	private void registerCommands()
-	{
+	private void registerCommands() {
 		getCommand("day").setExecutor(new DayCMD());
 		getCommand("sun").setExecutor(new SunCMD());
-		getCommand("c").setExecutor(new Gamemodes());
-		getCommand("s").setExecutor(new Gamemodes());
-		getCommand("sp").setExecutor(new Gamemodes());
+		getCommand("c").setExecutor(new GamemodeCMD());
+		getCommand("s").setExecutor(new GamemodeCMD());
+		getCommand("sp").setExecutor(new GamemodeCMD());
 		getCommand("tpa").setExecutor(new TpaCMD());
 		getCommand("tpaccept").setExecutor(new TpaCMD());
 		getCommand("tpdecline").setExecutor(new TpaCMD());
@@ -65,8 +63,7 @@ public class CustomServerUtilv2 extends JavaPlugin
 		return plugin;
 	}
 	
-	private void registerConfig() 
-	{
+	private void registerConfig() {
 		this.getConfig().options().copyDefaults(true);
 		saveConfig();
 	}
@@ -74,11 +71,5 @@ public class CustomServerUtilv2 extends JavaPlugin
 	public static String getPrefix() {
 		return Prefix;
 		
-	}	
-
-
-
-
-
-
+	}
 }
