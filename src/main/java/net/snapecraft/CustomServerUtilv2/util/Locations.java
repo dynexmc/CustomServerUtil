@@ -149,7 +149,7 @@ public class Locations {
     }
 
     //Nichts
-    public String warpeList(){
+    public String warpList(){
         ConfigurationSection cs = cfg.getConfigurationSection("Warps");
         String out = "";
         for(String s : cs.getKeys(false)){
