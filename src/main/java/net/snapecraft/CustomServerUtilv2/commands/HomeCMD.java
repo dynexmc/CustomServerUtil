@@ -83,7 +83,7 @@ public class HomeCMD implements CommandExecutor {
     private int FreeHomes(Player player){
         int maxSize = 0;
         for(PermissionAttachmentInfo perms : player.getEffectivePermissions()){
-            if (perms.getPermission().startsWith("homes.")) {
+            if (perms.getPermission().startsWith("csu.homes.")) {
                 maxSize = Math.max(maxSize, Integer.valueOf(perms.getPermission().split("homes.")[1]));
                 return maxSize;
             }
