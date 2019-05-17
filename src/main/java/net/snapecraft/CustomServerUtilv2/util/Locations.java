@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Locations {
-
     
     private File file = new File("plugins//CustomServerUtilv2//Locations.yml");
     private FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
