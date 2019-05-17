@@ -149,7 +149,7 @@ public class Locations {
     }
 
     //Nichts
-    public String waprList(){
+    public String warpeList(){
         ConfigurationSection cs = cfg.getConfigurationSection("Warps");
         String out = "";
         for(String s : cs.getKeys(false)){
@@ -165,7 +165,7 @@ public class Locations {
     }
 
     //Root
-    public void delWarp(){
+    public void removeWarp(){
         cfg.set("Warps." + root, null);
         save();
     }
