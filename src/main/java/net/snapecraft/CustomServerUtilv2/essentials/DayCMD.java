@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import net.snapecraft.CustomServerUtilv2.main.CustomServerUtilv2;
 
-public class dayCMD implements CommandExecutor {
+public class DayCMD implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
