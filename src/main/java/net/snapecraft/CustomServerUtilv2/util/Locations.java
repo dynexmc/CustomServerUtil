@@ -13,41 +13,39 @@ import java.io.IOException;
 
 public class Locations {
 
+    
     private File file = new File("plugins//CustomServerUtilv2//Locations.yml");
     private FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
     private String playerName;
     private Location location;
-    private String tpName;
+    private String root;
 
-    public Locations(Location location, String playerName,String tpName){
+    public Locations(Location location, String playerName,String root){
         this.playerName = playerName;
         this.location = location;
-        this.tpName = tpName;
+        this.root = root;
     }
 
-    public Locations(String playerName,String tpName){
+    public Locations(String playerName,String root){
         this.playerName = playerName;
-        this.tpName = tpName;
+        this.root = root;
     }
 
-    public Locations(String playerName){
-        this.playerName = playerName;
-    }
-
-    public Locations(Location location, String tpName){
+    public Locations(Location location, String root){
         this.location = location;
-        this.tpName = tpName;
+        this.root = root;
     }
 
-    public Locations(String tpName, int nix){
-        this.tpName = tpName;
+    public Locations (String root){
+        this.root = root;
     }
 
     public Locations(){}
 
+    //Location PlayerName Root
     public void setHome(){
-        String path = playerName +".homes." + tpName;
+        String path = playerName +".homes." + root;
         cfg.set(path + ".world", location.getWorld().getName());
         cfg.set(path + ".x",location.getX());
         cfg.set(path + ".y",location.getY());
@@ -57,8 +55,9 @@ public class Locations {
         save();
     }
 
+    //PlayeerName Root
     public Location getHome(){
-        String path = playerName +".homes." + tpName;
+        String path = playerName +".homes." + root;
         String W = cfg.getString(path + ".world");
         World w = Bukkit.getWorld(W);
         double x = cfg.getDouble(path + ".x");
@@ -69,9 +68,10 @@ public class Locations {
         return new Location(w,x,y,z,yaw,pitch);
     }
 
+    //Root
     public boolean hasFreeHomes(int homes) {
-        if(cfg.contains(playerName)){
-        ConfigurationSection cs = cfg.getConfigurationSection(playerName + ".homes");
+        if(cfg.contains(root)){
+        ConfigurationSection cs = cfg.getConfigurationSection(root + ".homes");
         if(cs.getKeys(false).size() <= homes -1)
             return true;
         }else
@@ -79,16 +79,17 @@ public class Locations {
         return false;
     }
 
-
+    //PlayerName Root
     public boolean homeExists(){
-        if(cfg.contains(playerName + ".homes." + tpName))
+        if(cfg.contains(playerName + ".homes." + root))
             return true;
         return false;
     }
 
+    //Root
     public String getHomes(){
         if(playerExists()) {
-            ConfigurationSection cs = cfg.getConfigurationSection(playerName + ".homes");
+            ConfigurationSection cs = cfg.getConfigurationSection(root + ".homes");
             String out = "";
             for(String s : cs.getKeys(false)){
                 out = HomeCMD.HomesFormat.replace("%homes%", s).replace("%nextHomes%",out);
@@ -101,20 +102,23 @@ public class Locations {
         return null;
     }
 
+    //PlayerName Root
     public void removeHome(){
-        cfg.set(playerName + ".homes." + tpName, null);
+        cfg.set(playerName + ".homes." + root, null);
         save();
     }
 
+    //Root
     public boolean playerExists(){
-        if(cfg.contains(playerName))
+        if(cfg.contains(root))
             return true;
 
         return false;
     }
 
+    //Location Root
     public void setWarp(){
-        String path = "Warps." + tpName;
+        String path = "Warps." + root;
         cfg.set(path + ".world", location.getWorld().getName());
         cfg.set(path + ".x", location.getX());
         cfg.set(path + ".y", location.getY());
@@ -124,8 +128,9 @@ public class Locations {
         save();
     }
 
+    //Root
     public Location getWarp(){
-        String path = "Warps." + tpName;
+        String path = "Warps." + root;
         String World = cfg.getString(path + ".world");
         World w = Bukkit.getWorld(World);
         double x = cfg.getDouble(path + ".x");
@@ -137,12 +142,14 @@ public class Locations {
         return new Location(w,x,y,z,yaw,pitch);
     }
 
+    //Root
     public boolean warpExists(){
-        if(cfg.contains("Warps." + tpName))
+        if(cfg.contains("Warps." + root))
             return true;
         return false;
     }
 
+    //Nichts
     public String waprList(){
         ConfigurationSection cs = cfg.getConfigurationSection("Warps");
         String out = "";
@@ -158,8 +165,9 @@ public class Locations {
         return null;
     }
 
+    //Root
     public void delWarp(){
-        cfg.set("Warps." + tpName, null);
+        cfg.set("Warps." + root, null);
         save();
     }
 
