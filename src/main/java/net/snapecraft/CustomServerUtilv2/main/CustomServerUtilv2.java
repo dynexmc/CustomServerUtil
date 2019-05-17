@@ -58,6 +58,7 @@ public class CustomServerUtilv2 extends JavaPlugin
 		getCommand("warps").setExecutor(new WarpCMD());
 		getCommand("setwarp").setExecutor(new WarpCMD());
 		getCommand("warp").setExecutor(new WarpCMD());
+		getCommand("delWarp").setExecutor(new WarpCMD());
 	}
 	
 	public static CustomServerUtilv2 getPlugin() {
