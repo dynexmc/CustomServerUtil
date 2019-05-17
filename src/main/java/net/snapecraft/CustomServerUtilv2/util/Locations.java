@@ -35,6 +35,17 @@ public class Locations {
         this.playerName = playerName;
     }
 
+    public Locations(Location location, String tpName){
+        this.location = location;
+        this.tpName = tpName;
+    }
+
+    public Locations(String tpName, int nix){
+        this.tpName = tpName;
+    }
+
+    public Locations(){}
+
     public void setHome(){
         String path = playerName +".homes." + tpName;
         cfg.set(path + ".world", location.getWorld().getName());
@@ -84,7 +95,7 @@ public class Locations {
             }
 
             out = out.trim();
-            out = out.substring(0, out.length() -4);
+            out = out.substring(0, out.length() -1);
                 return out;
         }
         return null;
@@ -100,6 +111,56 @@ public class Locations {
             return true;
 
         return false;
+    }
+
+    public void setWarp(){
+        String path = "Warps." + tpName;
+        cfg.set(path + ".world", location.getWorld().getName());
+        cfg.set(path + ".x", location.getX());
+        cfg.set(path + ".y", location.getY());
+        cfg.set(path + ".z", location.getZ());
+        cfg.set(path + ".yaw", location.getYaw());
+        cfg.set(path + ".pitch", location.getPitch());
+        save();
+    }
+
+    public Location getWarp(){
+        String path = "Warps." + tpName;
+        String World = cfg.getString(path + ".world");
+        World w = Bukkit.getWorld(World);
+        double x = cfg.getDouble(path + ".x");
+        double y = cfg.getDouble(path + ".y");
+        double z = cfg.getDouble(path + ".z");
+        float yaw = (float)cfg.getDouble(path + ".yaw");
+        float pitch = (float)cfg.getDouble(path + ".pitch");
+
+        return new Location(w,x,y,z,yaw,pitch);
+    }
+
+    public boolean warpExists(){
+        if(cfg.contains("Warps." + tpName))
+            return true;
+        return false;
+    }
+
+    public String waprList(){
+        ConfigurationSection cs = cfg.getConfigurationSection("Warps");
+        String out = "";
+        for(String s : cs.getKeys(false)){
+            out = HomeCMD.HomesFormat.replace("%homes%", s).replace("%nextHomes%",out);
+        }
+
+        out = out.trim();
+        out = out.substring(0, out.length() -4);
+        if(out != null)
+        return out;
+
+        return null;
+    }
+
+    public void delWarp(){
+        cfg.set("Warps." + tpName, null);
+        save();
     }
 
     public void save(){
