@@ -6,7 +6,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import net.snapecraft.CustomServerUtilv2.essentials.VanishCMD;
 
-public class VanishPlayerquitEvent implements Listener {
+public class VanishPlayerQuitEvent implements Listener {
 	
 	@EventHandler
 	public void onQuit(PlayerQuitEvent e) {
