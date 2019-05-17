@@ -2,6 +2,7 @@ package net.snapecraft.CustomServerUtilv2.main;
 
 import net.snapecraft.CustomServerUtilv2.commands.HomeCMD;
 import net.snapecraft.CustomServerUtilv2.commands.TpaCMD;
+import net.snapecraft.CustomServerUtilv2.commands.WarpCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.snapecraft.CustomServerUtilv2.essentials.FlyCMD;
@@ -54,6 +55,9 @@ public class CustomServerUtilv2 extends JavaPlugin
 		getCommand("sethome").setExecutor(new HomeCMD());
 		getCommand("delhome").setExecutor(new HomeCMD());
 		getCommand("home").setExecutor(new HomeCMD());
+		getCommand("warps").setExecutor(new WarpCMD());
+		getCommand("setwarp").setExecutor(new WarpCMD());
+		getCommand("warp").setExecutor(new WarpCMD());
 	}
 	
 	public static CustomServerUtilv2 getPlugin() {
