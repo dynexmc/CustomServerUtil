@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import net.snapecraft.CustomServerUtilv2.main.CustomServerUtilv2;
 
-public class sunCMD implements CommandExecutor {
+public class SunCMD implements CommandExecutor {
 	
 	 public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 	        Player p = (Player) commandSender;
