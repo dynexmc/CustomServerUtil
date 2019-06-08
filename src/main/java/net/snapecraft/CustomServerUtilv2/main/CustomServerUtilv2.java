@@ -1,8 +1,11 @@
 package net.snapecraft.CustomServerUtilv2.main;
 
 import net.snapecraft.CustomServerUtilv2.commands.HomeCMD;
+import net.snapecraft.CustomServerUtilv2.commands.SpawnCMD;
 import net.snapecraft.CustomServerUtilv2.commands.TpaCMD;
 import net.snapecraft.CustomServerUtilv2.commands.WarpCMD;
+import net.snapecraft.CustomServerUtilv2.util.ConfigWerte;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.snapecraft.CustomServerUtilv2.essentials.FlyCMD;
@@ -15,9 +18,9 @@ import net.snapecraft.CustomServerUtilv2.essentials.SunCMD;
 public class CustomServerUtilv2 extends JavaPlugin 
 {
 	private static CustomServerUtilv2 plugin;
-	
-	public final static String noPermission = "§cDu Hast nicht Die Berichtigung um Den Befehl Auszuführen";
-	public final static String Prefix = "§7[§3Server§7]§5 > §r";
+	public static String Prefix = "Kacke < ";
+	public static String noPermission = "Kake >";
+
 	public final String art = "\n" +
 			"   _____          _                   _____                          _    _ _   _ _ \n" + 
 			"  / ____|        | |                 / ____|                        | |  | | | (_) |\n" + 
@@ -29,11 +32,10 @@ public class CustomServerUtilv2 extends JavaPlugin
 	
 	@Override
 	public void onEnable() {
-	
 		plugin = this;
 		registerCommands();
 		registerConfig();
-		
+
 		System.out.println(art);
 	}
 	
@@ -57,6 +59,8 @@ public class CustomServerUtilv2 extends JavaPlugin
 		getCommand("setwarp").setExecutor(new WarpCMD());
 		getCommand("warp").setExecutor(new WarpCMD());
 		getCommand("delWarp").setExecutor(new WarpCMD());
+		getCommand("spawn").setExecutor(new SpawnCMD());
+		getCommand("setspawn").setExecutor(new SpawnCMD());
 	}
 	
 	public static CustomServerUtilv2 getPlugin() {
@@ -64,12 +68,11 @@ public class CustomServerUtilv2 extends JavaPlugin
 	}
 	
 	private void registerConfig() {
-		this.getConfig().options().copyDefaults(true);
+		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}
 
 	public static String getPrefix() {
 		return Prefix;
-		
 	}
 }

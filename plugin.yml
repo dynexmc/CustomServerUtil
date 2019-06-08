@@ -40,6 +40,12 @@ commands:
     description: See all warps
   warp:
     description: Teleportation to a warp
+  delwarp:
+    description: Delete a Warp
+  spawn:
+    description: Teleportation to Spawn
+  setspawn:
+    description: Set Spawn
                 
        
             

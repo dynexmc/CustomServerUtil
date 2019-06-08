@@ -1,0 +1,10 @@
+Settings:
+  Prefix: '§7[§3Server§7]§5 > §r'
+  NoPermission: '§cDu Hast nicht Die Berichtigung um Den Befehl Auszuführen'
+Spawn:
+  ToSpawn: '&2Du bist jetzt am Spawn!'
+  NoSpawnpoint: '&4Der Spawn wurde noch nicht gesetzt!'
+  SpeakDeveloper: '&4Bitte wende dich an einen Developer!'
+  MoveSpawn: '&2Der Spawn wurde verschopen!'
+  SetSpawn: '&2Der Spawn wurde gesetzt!'
+  SpawnCMD: '&4Benutze /spawn'
