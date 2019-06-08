@@ -1,6 +1,7 @@
 package net.snapecraft.CustomServerUtilv2.essentials;
 
 
+import net.snapecraft.CustomServerUtilv2.util.ConfigWerte;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,16 +11,19 @@ import net.snapecraft.CustomServerUtilv2.main.CustomServerUtilv2;
 
 public class DayCMD implements CommandExecutor {
 
+    private static ConfigWerte cw;
+
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-
-        Player p = (Player) sender;
-        if(p.hasPermission("CustomServerUtil.setDayTime")) {
-            p.getLocation().getWorld().setTime(0);
-            p.sendMessage(CustomServerUtilv2.Prefix + "§aEs ist nun §6Tag!");
-        } else {
-            p.sendMessage(CustomServerUtilv2.Prefix + CustomServerUtilv2.noPermission);
+        if(sender instanceof Player) {
+            cw = new ConfigWerte();
+            Player p = (Player) sender;
+            if (p.hasPermission("csu.day")) {
+                p.getLocation().getWorld().setTime(0);
+                ConfigWerte.playerMessage(p, cw.Prefix + cw.Day);
+            } else {
+                ConfigWerte.playerMessage(p, cw.Prefix + cw.NoPerm);
+            }
         }
-
         return true;
     }
 }

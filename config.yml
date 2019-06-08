@@ -8,3 +8,17 @@ Spawn:
   MoveSpawn: '&2Der Spawn wurde verschopen!'
   SetSpawn: '&2Der Spawn wurde gesetzt!'
   SpawnCMD: '&4Benutze /spawn'
+Vanish:
+  Show: 'Du Bist nun Sichtbar Jeder kann dich Sehen!'
+  Hide: 'Du Bist nun Unsichtbar keiner kann dich Sehen'
+Sun:
+  Sunny: 'Es ist nun Sonnig!'
+Fly:
+  CanFly: '&aDu kannst nun fliegen.'
+  CantFly: '&aDu kannst nun §6nicht mehr fliegen.'
+  CanOtherFly: '&6%player% &akann nun Fliegen.'
+  CantOtherFly: '&6%player% &akann nun nicht mehr Fliegen.'
+  UnknownPlayer: '&cSpieler &6%Player% &cnicht gefunden!'
+  FlyCMD: '&cWrong Usage: /fly oder /fly <Name>'
+Day:
+  Day: '&aEs ist nun &6Tag!'

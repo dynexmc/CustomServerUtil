@@ -4,8 +4,10 @@ import net.snapecraft.CustomServerUtilv2.commands.HomeCMD;
 import net.snapecraft.CustomServerUtilv2.commands.SpawnCMD;
 import net.snapecraft.CustomServerUtilv2.commands.TpaCMD;
 import net.snapecraft.CustomServerUtilv2.commands.WarpCMD;
+import net.snapecraft.CustomServerUtilv2.events.SpawnJoinEvent;
 import net.snapecraft.CustomServerUtilv2.util.ConfigWerte;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.snapecraft.CustomServerUtilv2.essentials.FlyCMD;
@@ -35,11 +37,18 @@ public class CustomServerUtilv2 extends JavaPlugin
 		plugin = this;
 		registerCommands();
 		registerConfig();
+        registerEvents(Bukkit.getPluginManager());
 
 		System.out.println(art);
 	}
-	
-	private void registerCommands() {
+
+    private void registerEvents(PluginManager pm) {
+        pm.registerEvents(new SpawnJoinEvent(), this);
+
+
+    }
+
+    private void registerCommands() {
 		getCommand("day").setExecutor(new DayCMD());
 		getCommand("sun").setExecutor(new SunCMD());
 		getCommand("c").setExecutor(new GamemodeCMD());
@@ -64,6 +73,9 @@ public class CustomServerUtilv2 extends JavaPlugin
 	}
 	
 	public static CustomServerUtilv2 getPlugin() {
+
+
+
 		return plugin;
 	}
 	
@@ -73,6 +85,8 @@ public class CustomServerUtilv2 extends JavaPlugin
 	}
 
 	public static String getPrefix() {
+
+
 		return Prefix;
 	}
 }
