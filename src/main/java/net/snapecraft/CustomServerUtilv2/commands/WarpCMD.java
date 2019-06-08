@@ -1,7 +1,7 @@
 package net.snapecraft.CustomServerUtilv2.commands;
 
 import net.snapecraft.CustomServerUtilv2.main.CustomServerUtilv2;
-import net.snapecraft.CustomServerUtilv2.util.Locations;
+import net.snapecraft.CustomServerUtilv2.util.Warp;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,9 +20,9 @@ public class WarpCMD implements CommandExecutor {
             if(args.length == 1){
                 if(cmd.getName().equalsIgnoreCase("setWarp")){
                     if(player.hasPermission("csu.setwarp")) {
-                        Locations loc = new Locations(player.getLocation(), args[0]);
-                        if (!loc.warpExists()) {
-                            loc.setWarp();
+                        Warp warp = new Warp(player.getLocation(), args[0]);
+                        if (!warp.warpExists()) {
+                            warp.setWarp();
                             player.sendMessage(CustomServerUtilv2.Prefix + "§2Du hast den Warp §6" + args[0] + " §2erstellt!");
                         } else {
                             player.sendMessage(CustomServerUtilv2.Prefix + "§4Der Warp existiert bereits!");
@@ -35,16 +35,16 @@ public class WarpCMD implements CommandExecutor {
             //warps
             if(args.length == 0){
                 if(cmd.getName().equalsIgnoreCase("warps")){
-                    Locations loc = new Locations();
-                    player.sendMessage(CustomServerUtilv2.Prefix + "§2Warps: §6" + loc.warpList());
+                    Warp warp = new Warp();
+                    player.sendMessage(CustomServerUtilv2.Prefix + "§2Warps: §6" + warp.warpList());
                 }
             }
 
             if(args.length == 1){
                 if(cmd.getName().equalsIgnoreCase("warp")){
-                    Locations locations = new Locations(args[0]);
-                    if(locations.warpExists()){
-                        player.teleport(locations.getWarp());
+                    Warp warp = new Warp(args[0]);
+                    if(warp.warpExists()){
+                        player.teleport(warp.getWarp());
                     }
                 }
             }
