@@ -22,36 +22,52 @@ public class GamemodeCMD implements CommandExecutor{
 				if (args.length == 0) {
 					if (command.getName().equalsIgnoreCase("s")) {
 						p.setGameMode(GameMode.SURVIVAL);
+						ConfigWerte.playerMessage(p, cw.Prefix + cw.Survival);
 					}
 					if (command.getName().equalsIgnoreCase("c")) {
 						p.setGameMode(GameMode.CREATIVE);
+						ConfigWerte.playerMessage(p, cw.Prefix + cw.Creative);
 					}
 					if (command.getName().equalsIgnoreCase("sp")) {
 						p.setGameMode(GameMode.SPECTATOR);
+						ConfigWerte.playerMessage(p, cw.Prefix + cw.Spectator);
+					}
+					if(command.getName().equalsIgnoreCase("a")){
+						p.setGameMode(GameMode.ADVENTURE);
+						ConfigWerte.playerMessage(p, cw.Prefix + cw.Adventure);
 					}
 				}
 			} else
 				ConfigWerte.playerMessage(p, cw.Prefix + cw.NoPerm);
+
 			if (p.hasPermission("csu.othergm")) {
 				if (args.length == 1) {
 					if (Bukkit.getPlayer(args[0]) != null) {
+						Player target = Bukkit.getPlayer(args[0]);
 						if (command.getName().equalsIgnoreCase("s")) {
-							Bukkit.getPlayer(args[0]).setGameMode(GameMode.SURVIVAL);
+							target.setGameMode(GameMode.SURVIVAL);
+							ConfigWerte.playerMessage(target, cw.Prefix + cw.Survival);
+							ConfigWerte.playerMessage(p, cw.Prefix + cw.SurvivalOther.replace("%player%", args[0]));
 						}
 						if (command.getName().equalsIgnoreCase("c")) {
-							Bukkit.getPlayer(args[0]).setGameMode(GameMode.CREATIVE);
+							target.setGameMode(GameMode.CREATIVE);
+							ConfigWerte.playerMessage(target, cw.Prefix + cw.Creative);
+							ConfigWerte.playerMessage(p, cw.Prefix + cw.CreativeOther.replace("%player%", args[0]));
 						}
 						if (command.getName().equalsIgnoreCase("sp")) {
-							Bukkit.getPlayer(args[0]).setGameMode(GameMode.SPECTATOR);
-						} else {
-							p.sendMessage(CustomServerUtilv2.Prefix + "§cBenutzung: /<c/s/sp>");
+							target.setGameMode(GameMode.SPECTATOR);
+							ConfigWerte.playerMessage(target, cw.Prefix + cw.Spectator);
+							ConfigWerte.playerMessage(p, cw.Prefix + cw.SpectatorOther.replace("%player%", args[0]));
 						}
-					} else {
-						p.sendMessage(CustomServerUtilv2.Prefix + "§cBitte gib einen gültigen Spielernamen ein!");
-					}
-				} else {
-					p.sendMessage(CustomServerUtilv2.Prefix + "§cBenutzung: /<c/s/sp> <Spieler>");
-				}
+						if(command.getName().equalsIgnoreCase("a")){
+							target.setGameMode(GameMode.ADVENTURE);
+							ConfigWerte.playerMessage(target, cw.Prefix + cw.Adventure);
+							ConfigWerte.playerMessage(p, cw.Prefix + cw.AdventureOther.replace("%player%", args[0]));
+						}
+					} else
+						ConfigWerte.playerMessage(p,cw.Prefix + cw.UnknownPlayer);
+				} else
+					ConfigWerte.playerMessage(p,cw.Prefix + cw.GmCMD.replace("%player%", args[0]));
 			} else
 				p.sendMessage(CustomServerUtilv2.noPermission);
 		}

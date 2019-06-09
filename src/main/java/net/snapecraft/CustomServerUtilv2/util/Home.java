@@ -16,6 +16,8 @@ public class Home {
     private File file = new File("plugins//CustomServerUtilv2//Homes.yml");
     private FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
+    private ConfigWerte cw;
+
     private String playerName;
     private Location location;
     private String root;
@@ -78,11 +80,12 @@ public class Home {
 
     //Root
     public String getHomes(){
+        cw = new ConfigWerte();
         if(playerExists()) {
             ConfigurationSection cs = cfg.getConfigurationSection(root + ".homes");
             String out = "";
             for(String s : cs.getKeys(false)){
-                out = HomeCMD.HomesFormat.replace("%homes%", s).replace("%nextHomes%",out);
+                out = cw.HomeFormat.replace("%homes%", s).replace("%nextHomes%",out);
             }
 
             out = out.trim();

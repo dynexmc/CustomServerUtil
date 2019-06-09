@@ -9,6 +9,8 @@ commands:
    description: Survival mode
   sp:
     description: Spectator mode
+  a:
+    description: Adventure mode
   day:
     description: Time to Day
   sun:

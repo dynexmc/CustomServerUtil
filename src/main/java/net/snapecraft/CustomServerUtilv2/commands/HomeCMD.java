@@ -1,6 +1,6 @@
 package net.snapecraft.CustomServerUtilv2.commands;
 
-import net.snapecraft.CustomServerUtilv2.main.CustomServerUtilv2;
+import net.snapecraft.CustomServerUtilv2.util.ConfigWerte;
 import net.snapecraft.CustomServerUtilv2.util.Home;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,24 +10,23 @@ import org.bukkit.permissions.PermissionAttachmentInfo;
 
 public class HomeCMD implements CommandExecutor {
 
-    public static String HomesFormat = "§6%homes%§7, §6%nextHomes%";
+    private static ConfigWerte cw;
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if(sender instanceof Player) {
             Player player = (Player) sender;
-
+            cw = new ConfigWerte();
             if(args.length == 0 && !cmd.getName().equalsIgnoreCase("homes")){
-                player.sendMessage(CustomServerUtilv2.Prefix + "§4Benutze /home <home> um!");
+                ConfigWerte.playerMessage(player, cw.Prefix + cw.HomeCMD);
             }
             if(args.length == 0) {
                 if (cmd.getName().equalsIgnoreCase("homes")) {
                     Home home = new Home(player.getName());
                     if(home.playerExists()) {
-                        player.sendMessage(CustomServerUtilv2.Prefix + "§2Deine Homes: " + home.getHomes());
-                    }else {
-                        player.sendMessage(CustomServerUtilv2.Prefix + "§4Du hast noch keine Homes /sethome <home>");
-                    }
+                        ConfigWerte.playerMessage(player,cw.Prefix + cw.Homes.replace("%homes%", home.getHomes()));
+                    }else
+                        ConfigWerte.playerMessage(player, cw.Prefix + cw.NoHomes);
                 }
             }
             if(args.length == 1){
@@ -37,14 +36,11 @@ public class HomeCMD implements CommandExecutor {
                     if(!(home.homeExists())){
                         if(home.hasFreeHomes(homes)){
                             home.setHome();
-                            player.sendMessage(CustomServerUtilv2.Prefix + "§2Du hast ein Home mit dem Name §6" + args[0] + "§2 gesetzt!");
-                        }
-                        else {
-                            player.sendMessage(CustomServerUtilv2.Prefix + "§4Du hast keine freien Homes mehr!");
-                        }
-                    }else {
-                        player.sendMessage(CustomServerUtilv2.Prefix + "§4Dieses Home exestiert bereits!");
-                    }
+                            ConfigWerte.playerMessage(player, cw.Prefix + cw.SetHome.replace("%home%", args[0]));                        }
+                        else
+                            ConfigWerte.playerMessage(player,cw.Prefix + cw.NoFreeHomes);
+                    }else
+                        ConfigWerte.playerMessage(player, cw.Prefix + cw.HomeExist);
                 }
             }
             if(args.length == 1){
@@ -53,13 +49,11 @@ public class HomeCMD implements CommandExecutor {
                     if(home.playerExists()){
                         if(home.homeExists()){
                             home.removeHome();
-                            player.sendMessage(CustomServerUtilv2.Prefix + "§2Du hast §6" + args[0] + " §2gelöscht!");
-                        }else {
-                            player.sendMessage(CustomServerUtilv2.Prefix + "§4Diesen Home existiert nicht!");
-                        }
-                    }else{
-                        player.sendMessage(CustomServerUtilv2.Prefix + "§4Du hast keine Homes zum löschen!");
-                    }
+                            ConfigWerte.playerMessage(player,cw.Prefix + cw.RemoveHome.replace("%home%", args[0]));
+                        }else
+                            ConfigWerte.playerMessage(player, cw.Prefix + cw.HomeDontExist);
+                    }else
+                        ConfigWerte.playerMessage(player, cw.Prefix + cw.NoHomes);
                 }
             }
             if(args.length == 1){
@@ -68,13 +62,11 @@ public class HomeCMD implements CommandExecutor {
                     if(home.playerExists()){
                         if(home.homeExists()){
                             player.teleport(home.getHome());
-                            player.sendMessage(CustomServerUtilv2.Prefix + "§2Du wardest zu dem Home §6" + args[0] + " §2Teleportiert!");
-                        }else {
-                            player.sendMessage(CustomServerUtilv2.Prefix + "§4Diesen Home existiert nicht!");
-                        }
-                    }else{
-                        player.sendMessage(CustomServerUtilv2.Prefix + "§4Du hast noch keine Homes /sethome <home>");
-                    }
+                            ConfigWerte.playerMessage(player, cw.Prefix + cw.Home.replace("%home%", args[0]));
+                        }else
+                            ConfigWerte.playerMessage(player, cw.Prefix + cw.HomeDontExist);
+                    }else
+                        ConfigWerte.playerMessage(player, cw.Prefix + cw.NoHomes);
                 }
             }
         }

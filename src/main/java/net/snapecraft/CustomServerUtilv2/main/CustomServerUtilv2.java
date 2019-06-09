@@ -54,6 +54,7 @@ public class CustomServerUtilv2 extends JavaPlugin
 		getCommand("c").setExecutor(new GamemodeCMD());
 		getCommand("s").setExecutor(new GamemodeCMD());
 		getCommand("sp").setExecutor(new GamemodeCMD());
+		getCommand("a").setExecutor(new GamemodeCMD());
 		getCommand("tpa").setExecutor(new TpaCMD());
 		getCommand("tpaccept").setExecutor(new TpaCMD());
 		getCommand("tpdecline").setExecutor(new TpaCMD());

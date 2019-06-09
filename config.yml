@@ -1,6 +1,8 @@
 Settings:
   Prefix: '§7[§3Server§7]§5 > §r'
   NoPermission: '§cDu Hast nicht Die Berichtigung um Den Befehl Auszuführen'
+  UnknownPlayer: '&cSpieler &6%Player% &cnicht gefunden!'
+  HomeFormat: '§6%homes%§7, §6%nextHomes%'
 Spawn:
   ToSpawn: '&2Du bist jetzt am Spawn!'
   NoSpawnpoint: '&4Der Spawn wurde noch nicht gesetzt!'
@@ -18,7 +20,26 @@ Fly:
   CantFly: '&aDu kannst nun §6nicht mehr fliegen.'
   CanOtherFly: '&6%player% &akann nun Fliegen.'
   CantOtherFly: '&6%player% &akann nun nicht mehr Fliegen.'
-  UnknownPlayer: '&cSpieler &6%Player% &cnicht gefunden!'
-  FlyCMD: '&cWrong Usage: /fly oder /fly <Name>'
+  FlyCMD: '&cBenutze: /fly oder /fly <Name>'
 Day:
   Day: '&aEs ist nun &6Tag!'
+Gamemode:
+  GmCMD: '&cBenutze: /<c/s/sp/a> oder /<c/s/sp/a> <Spieler>'
+  Survival: '&aDu bist jetzt im &6Survival &aGamemode!'
+  SurvivalOther: '&a%player% ist jetzt im &6Survival &aGamemode!'
+  Creative: '&aDu bist jetzt im &6Creative &aGamemode!'
+  CreativeOther: '&a%player% ist jetzt im &6Creative &aGamemode!'
+  Spectator: '&aDu bist jetzt im &6Spectator &aGamemode!'
+  SpectatorOther: '&a%player% ist jetzt im &6Spectator &aGamemode!'
+  Adventure: '&aDu bist jetzt im &6Adventure &aGamemode!'
+  AdventureOther: '&a%player% ist jetzt im &6Adventure &aGamemode!'
+Home:
+  HomeCMD: '&4Benutze /home <home>!'
+  Homes: '&2Deine Homes: &6%homes%'
+  NoHomes: '&4Du hast noch keine Homes /sethome <home>'
+  SetHome: '&2Du hast ein Home mit dem Namen §6%home% §2gesetzt!'
+  NoFreeHomes: '&4Du hast keine freien Homes mehr!'
+  HomeExist: '&4Dieses Home exestiert bereits!'
+  HomeDontExist: '&4Dieses Home existiert nicht!'
+  RemoveHome: '&2Du hast §6%home% §2gelöscht!'
+  Home: '&2Du wurdest zu dem Home §6%home% §2Teleportiert!'
