@@ -1,6 +1,6 @@
 Settings:
   Prefix: '§7[§3Server§7]§5 > §r'
-  NoPermission: '§cDu Hast nicht Die Berichtigung um Den Befehl Auszuführen'
+  NoPermission: '§cDu hast nicht Die Berichtigung um Den Befehl Auszuführen'
   UnknownPlayer: '&cSpieler &6%Player% &cnicht gefunden!'
   HomeFormat: '§6%homes%§7, §6%nextHomes%'
 Spawn:
