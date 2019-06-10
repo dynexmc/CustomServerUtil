@@ -27,7 +27,7 @@ public class TpaCMD implements CommandExecutor {
                     Player target = Bukkit.getPlayer(args[0]);
                         if(target.isOnline()){
                             target.sendMessage(CustomServerUtilv2.Prefix + "§2Der Spieler §6" + player.getDisplayName() + " §2hat dir eine Teleportations anfrage geschickt!");
-                            target.sendMessage(CustomServerUtilv2.Prefix + "§2Nutze §a/tpaccept §2um die Anfrage anzunehmn oder §a/tpdecline §2um abzulehnen!");
+                            target.sendMessage(CustomServerUtilv2.Prefix + "§2Nutze §a/tpaccept §2um Die Anfrage anzunehmn oder §a/tpdecline §2um abzulehnen!");
                             player.sendMessage(CustomServerUtilv2.Prefix + "§2Du hast §6" + target.getDisplayName() + " §2eine Teleportations anfrage geschickt!");
                             if(!tpaRequests.containsKey(target)){
                                 tpaRequests.put(target, player);
