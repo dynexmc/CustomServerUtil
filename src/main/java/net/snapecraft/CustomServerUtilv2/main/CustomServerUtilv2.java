@@ -47,7 +47,7 @@ public class CustomServerUtilv2 extends JavaPlugin
 
 
     }
-
+	//Test
     private void registerCommands() {
 		getCommand("day").setExecutor(new DayCMD());
 		getCommand("sun").setExecutor(new SunCMD());
